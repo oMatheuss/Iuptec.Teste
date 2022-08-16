@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import axios from 'axios';
-import { environment } from 'src/environments/environment';
-import { SharedVariables } from '../commons/shared.variables';
+import { ApiService } from '../commons/ApiService';
 
 @Component({
   selector: 'app-login',
@@ -16,29 +14,28 @@ export class LoginComponent implements OnInit {
   senha: string = "";
 
   constructor(
-    private shared: SharedVariables,
+    private api: ApiService,
     private route: Router ) {
   }
 
   ngOnInit(): void {
-    let token: string = "";
-    this.shared.currentToken.subscribe(val => token = val);
-    if (token) {
-      this.route.navigate(['/home']);
-    }
+    this.api.validateToken().then(valid => {
+      if (valid)
+        this.route.navigate(['/home']);
+    }).catch(reason => {
+      alert(reason);
+    })
   }
   
   formSubmit(f: NgForm): void {
-    axios.post("/login", f.value, {
-      baseURL: environment.apiurl,
-    }).then(({ data }) => {
+    this.api.tryLogin(this.email, this.senha).then((data) => {
       if (data.success) {
-        console.log(data.output.token); 
-        this.shared.setApiToken(data.output.token);
         this.route.navigate(['/home']);
       } else {
         console.log(data.message);
       }
+    }).catch((reason : Error) => {
+      alert(reason.message);
     })
   }
 }

@@ -7,15 +7,17 @@ import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { SharedVariables } from './commons/shared.variables';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ApiService } from './commons/ApiService';
+import { VeiculosComponent } from './veiculos/veiculos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    VeiculosComponent,
     PagenotfoundComponent
   ],
   imports: [
@@ -24,7 +26,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MaterialModule,
     FormsModule
   ],
-  providers: [SharedVariables],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

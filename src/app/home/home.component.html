@@ -1,7 +1,9 @@
 <div class="container">
     <h3 class="h3 mb-3">Seu perfil</h3>
 
-    <mat-card>Nome: {{nome}}</mat-card>
-    <mat-card>Email: {{email}}</mat-card>
-    <mat-card>Telefone: {{telefone}}</mat-card>
+    <mat-card class="my-2" ><b>Nome:</b> {{nome}}</mat-card>
+    <mat-card class="mb-2" ><b>Email:</b> {{email}}</mat-card>
+    <mat-card class="mb-2" ><b>Telefone:</b> {{telefone}}</mat-card>
+
+    <button (click)="acessarVeiculos()" mat-raised-button color="primary">Acessar Veiculos</button>
 </div>

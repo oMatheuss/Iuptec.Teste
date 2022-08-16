@@ -1,15 +1,18 @@
 <p>
-  <mat-toolbar color="primary" >
-      <mat-icon>code</mat-icon>
-      <span>Cadastro de Veiculos</span>
-      <span class="nav-spacer"></span>
-      <button mat-icon-button>
-          <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button>
-          <mat-icon>share</mat-icon>
-      </button>
-  </mat-toolbar>
+    <mat-toolbar color="primary" >
+        <mat-icon>code</mat-icon>
+        <span>Cadastro de Veiculos</span>
+        <span class="nav-spacer"></span>
+        <button mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>share</mat-icon>
+        </button>
+        <button (click)="logout()" mat-icon-button>
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar>
 </p>
 
 <router-outlet></router-outlet>
