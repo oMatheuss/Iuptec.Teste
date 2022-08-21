@@ -26,8 +26,21 @@
             <th mat-header-cell *matHeaderCellDef> Ano </th>
             <td mat-cell *matCellDef="let element"> {{element.ano}} </td>   
         </ng-container>
+
+		<ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+				<button (click)="delete(element.id)" class="btn btn-danger btn-sm">
+					X
+				</button>
+			</td> 
+        </ng-container>
         
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+	</table>
+
+	<button (click)="cadastro()" mat-raised-button color="primary" >
+		Adicionar Veiculos
+	</button>
 </div>

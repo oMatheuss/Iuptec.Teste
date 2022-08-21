@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../commons/ApiService';
+import { AlertaService } from 'src/services/AlertaService';
+import { ApiService } from 'src/services/ApiService';
 
 @Component({
   selector: 'app-login',
@@ -9,33 +10,28 @@ import { ApiService } from '../commons/ApiService';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  title: string = "Login"
-  email: string = "";
-  senha: string = "";
+	title: string = "Login"
+	email: string = "";
+	senha: string = "";
 
-  constructor(
-    private api: ApiService,
-    private route: Router ) {
-  }
+	constructor(
+		private api: ApiService,
+		private route: Router,
+		private alert : AlertaService) {
+	}
 
-  ngOnInit(): void {
-    this.api.validateToken().then(valid => {
-      if (valid)
-        this.route.navigate(['/home']);
-    }).catch(reason => {
-      alert(reason);
-    })
-  }
-  
-  formSubmit(f: NgForm): void {
-    this.api.tryLogin(this.email, this.senha).then((data) => {
-      if (data.success) {
-        this.route.navigate(['/home']);
-      } else {
-        console.log(data.message);
-      }
-    }).catch((reason : Error) => {
-      alert(reason.message);
-    })
-  }
+	ngOnInit(): void {
+	}
+
+	formSubmit(f: NgForm): void {
+		this.api.tryLogin(this.email, this.senha).then((data) => {
+			if (data.success) {
+				this.route.navigate(['/home']);
+			} else {
+				this.alert.call("Atenção", data.message, "warning");
+			}
+		}).catch((reason : Error) => {
+			this.alert.call("Atenção", reason.message, "danger");
+		});
+	}
 }

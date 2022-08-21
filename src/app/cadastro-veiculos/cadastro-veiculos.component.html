@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-sm-6  offset-sm-3 small">
+        <h3>Cadastrar Veiculos</h3>
+        
+        <form #f="ngForm" (ngSubmit)="formSubmit(f)" class="form">
+
+			<mat-form-field class="w-100 my-2" appearance="fill">
+				<mat-label>Marca</mat-label>
+				<mat-select (selectionChange)="onSelectMarca($event)" [(ngModel)]="marca" name="marca" required="" >
+					<mat-option *ngFor="let marca of marcas" [value]="marca">
+						{{marca}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field class="w-100 my-2" appearance="fill">
+				<mat-label>Modelo</mat-label>
+				<mat-select (selectionChange)="onSelectModelo($event)" [(ngModel)]="modelo" name="modelo" required="">
+					<mat-option *ngFor="let modelo of modelos" [value]="modelo">
+						{{modelo}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field class="w-100 my-2" appearance="fill">
+				<mat-label>Ano</mat-label>
+				<mat-select [(ngModel)]="ano" name="ano" required="">
+					<mat-option *ngFor="let ano of anos" [value]="ano">
+						{{ano}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+            <mat-form-field class="w-100 mb-2" appearance="outline">
+                <mat-label>Placa</mat-label>
+                <input type="text" matInput [(ngModel)]="placa" (keyup)="capitalize()" name="placa" placeholder="ABC1D23" required="" autocomplete="off"/>
+                <mat-hint>Informe a placa do veículo!</mat-hint>
+            </mat-form-field>
+
+            <button type="submit" mat-raised-button color="primary">Adicionar</button>
+        </form>
+    </div>
+</div>

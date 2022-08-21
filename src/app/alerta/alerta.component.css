@@ -1,0 +1,24 @@
+.hide {
+	display: none;
+}
+
+.alert {
+	font-size: medium;
+	position: absolute;
+	right: 5px;
+	top: 50px;
+	width: 350px;
+	overflow: hidden;
+	word-break: break-all;
+	padding: 5px;
+	padding-left: 10px;
+}
+
+.alert p {
+	margin-bottom: 3px;
+}
+
+.alert button:focus {
+	outline: 0 !important;
+	box-shadow: none;
+}

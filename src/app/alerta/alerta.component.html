@@ -1,0 +1,5 @@
+<div class='alert alert-{{data.type}} alert-dismissible {{hide ? "hide" : ""}}' role='alert'>
+	<h4>{{data.title}}</h4>
+	<button (click)="closeAlert()" type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+	<p>{{data.message}}</p>
+</div>

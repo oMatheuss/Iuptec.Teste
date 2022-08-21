@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table' 
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { MatTableModule } from '@angular/material/table'
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+	MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -30,7 +32,8 @@ import { MatTableModule } from '@angular/material/table'
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+	MatSelectModule
   ]
 })
 export class MaterialModule {}

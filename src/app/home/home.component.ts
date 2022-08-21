@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../commons/ApiService';
+import { ApiService } from 'src/services/ApiService';
 
 @Component({
   selector: 'app-home',
@@ -8,31 +8,29 @@ import { ApiService } from '../commons/ApiService';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  telefone: string = "";
-  nome: string = "";
-  email: string = "";
-  constructor(
-    private api: ApiService,
-    private router: Router) { }
+	telefone: string = "";
+	nome: string = "";
+	email: string = "";
 
-  getPerfil() {
-    this.api.getMe().then((data) => {
-      if (data.success) {
-        this.nome = data.output.nome;
-        this.email = data.output.email;
-        this.telefone = data.output.telefone;
-      } else {
-        console.log(data.message);
-        this.router.navigate(['/login']);
-      }
-    });
-  }
+	constructor(
+		private api: ApiService,
+		private router: Router) { }
 
-  acessarVeiculos() {
-    this.router.navigate(['/veiculos']);
-  }
-  
-  ngOnInit(): void {  
-    this.getPerfil();
-  }
+	getPerfil() {
+		this.api.getMe().then((data) => {
+			if (data.success) {
+				this.nome = data.output.nome;
+				this.email = data.output.email;
+				this.telefone = data.output.telefone;
+			}
+		});
+	}
+
+	acessarVeiculos() {
+		this.router.navigate(['/veiculos']);
+	}
+
+	ngOnInit(): void {  
+		this.getPerfil();
+	}
 }

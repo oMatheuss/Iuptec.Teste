@@ -9,8 +9,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { ApiService } from './commons/ApiService';
 import { VeiculosComponent } from './veiculos/veiculos.component';
+import { CadastroVeiculosComponent } from './cadastro-veiculos/cadastro-veiculos.component';
+import { ApiService } from 'src/services/ApiService';
+import { AlertaService } from 'src/services/AlertaService';
+import { AlertaComponent } from './alerta/alerta.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { VeiculosComponent } from './veiculos/veiculos.component';
     LoginComponent,
     HomeComponent,
     VeiculosComponent,
-    PagenotfoundComponent
+	CadastroComponent,
+    CadastroVeiculosComponent,
+    PagenotfoundComponent,
+	AlertaComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +33,7 @@ import { VeiculosComponent } from './veiculos/veiculos.component';
     MaterialModule,
     FormsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AlertaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,18 +1,28 @@
 <p>
     <mat-toolbar color="primary" >
-        <mat-icon>code</mat-icon>
-        <span>Cadastro de Veiculos</span>
+		<div *ngIf="this.route !== '/login'" >
+			<button mat-button [matMenuTriggerFor]="menu">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<mat-menu #menu="matMenu">
+				<button (click)="goTo('/home')" mat-menu-item>Home</button>
+				<button (click)="goTo('/veiculos')" mat-menu-item>Meus Veículos</button>
+				<button (click)="goTo('/cadastro-veiculos')" mat-menu-item>Adicionar Veículos</button>
+			</mat-menu>
+		</div>
+        
+        <span>Gerencimento de Veículos</span>
         <span class="nav-spacer"></span>
-        <button mat-icon-button>
-            <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button>
-            <mat-icon>share</mat-icon>
-        </button>
-        <button (click)="logout()" mat-icon-button>
-            <mat-icon>logout</mat-icon>
-        </button>
+
+        <div *ngIf="this.route !== '/login'" >
+            <button (click)="logout()" mat-icon-button >
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+
     </mat-toolbar>
 </p>
+
+<app-alerta></app-alerta>
 
 <router-outlet></router-outlet>
